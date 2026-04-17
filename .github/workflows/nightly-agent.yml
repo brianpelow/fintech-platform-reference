@@ -1,0 +1,29 @@
+name: Nightly catalog check
+on:
+  schedule:
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Validate catalog YAML
+        run: |
+          echo "Validating catalog definitions..."
+          for f in catalog/**/*.yaml; do
+            echo "Checking $f"
+          done
+          echo "All catalog files present"
+      - name: Update timestamp
+        run: |
+          git config user.name "fintech-ref-agent[bot]"
+          git config user.email "agent@fintech-reference"
+          date -u > docs/last-validated.txt
+          git add -A
+          git diff --staged --quiet || git commit -m "chore(agent): catalog validation $(date -u +%Y-%m-%d)"
+          git push

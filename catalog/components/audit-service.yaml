@@ -1,0 +1,22 @@
+﻿apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: audit-service
+  description: Immutable audit trail service — captures all state changes for compliance and regulatory reporting
+  annotations:
+    github.com/project-slug: brianpelow/fintech-platform-reference
+    backstage.io/techdocs-ref: dir:.
+  tags:
+    - compliance
+    - audit
+    - p1
+    - sox
+    - pci-dss
+    - python
+spec:
+  type: service
+  lifecycle: production
+  owner: platform-team
+  system: platform
+  providesApis:
+    - audit-api

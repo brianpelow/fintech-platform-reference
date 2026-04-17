@@ -1,0 +1,23 @@
+﻿apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: api-gateway
+  description: Unified API gateway — TLS termination, JWT validation, rate limiting, and request routing
+  annotations:
+    github.com/project-slug: brianpelow/fintech-platform-reference
+    backstage.io/techdocs-ref: dir:.
+    pagerduty.com/service-id: gateway-p0
+  tags:
+    - platform
+    - gateway
+    - p0
+    - pci-dss
+spec:
+  type: service
+  lifecycle: production
+  owner: platform-team
+  system: platform
+  dependsOn:
+    - component:auth-service
+  providesApis:
+    - gateway-api

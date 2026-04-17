@@ -1,0 +1,31 @@
+﻿apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: payments-service
+  description: Core payment processing service — handles payment initiation, routing, and settlement
+  annotations:
+    github.com/project-slug: brianpelow/fintech-platform-reference
+    backstage.io/techdocs-ref: dir:.
+    pagerduty.com/service-id: payments-p0
+  tags:
+    - payments
+    - p0
+    - pci-dss
+    - iso20022
+    - python
+  links:
+    - url: https://github.com/brianpelow/PlatformSLOBoard
+      title: SLO Dashboard
+    - url: https://github.com/brianpelow/mcp-incident-intel
+      title: Incident Intel MCP
+spec:
+  type: service
+  lifecycle: production
+  owner: payments-team
+  system: payments-platform
+  dependsOn:
+    - component:auth-service
+    - component:audit-service
+    - component:api-gateway
+  providesApis:
+    - payments-api

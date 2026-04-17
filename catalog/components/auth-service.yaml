@@ -1,0 +1,24 @@
+﻿apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: auth-service
+  description: Identity and access management — JWT issuance, validation, and RBAC enforcement
+  annotations:
+    github.com/project-slug: brianpelow/fintech-platform-reference
+    backstage.io/techdocs-ref: dir:.
+    pagerduty.com/service-id: auth-p0
+  tags:
+    - identity
+    - auth
+    - p0
+    - pci-dss
+    - python
+spec:
+  type: service
+  lifecycle: production
+  owner: platform-team
+  system: platform
+  dependsOn:
+    - component:audit-service
+  providesApis:
+    - auth-api

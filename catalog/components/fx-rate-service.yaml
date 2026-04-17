@@ -1,0 +1,24 @@
+﻿apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: fx-rate-service
+  description: Real-time FX rate feed aggregator — provides currency exchange rates for trading and payments
+  annotations:
+    github.com/project-slug: brianpelow/fintech-platform-reference
+    backstage.io/techdocs-ref: dir:.
+    pagerduty.com/service-id: fx-rate-p0
+  tags:
+    - trading
+    - fx
+    - p0
+    - python
+spec:
+  type: service
+  lifecycle: production
+  owner: trading-team
+  system: trading-platform
+  dependsOn:
+    - component:auth-service
+    - component:audit-service
+  providesApis:
+    - fx-rate-api

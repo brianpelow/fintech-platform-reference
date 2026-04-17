@@ -1,0 +1,33 @@
+﻿apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: payments-platform
+  description: Core payments processing platform — ISO 20022, PCI-DSS compliant
+  tags:
+    - payments
+    - pci-dss
+    - iso20022
+spec:
+  owner: payments-team
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: trading-platform
+  description: FX trading and rate management platform
+  tags:
+    - trading
+    - fx
+spec:
+  owner: trading-team
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: platform
+  description: Core platform infrastructure — auth, audit, gateway, observability
+  tags:
+    - platform
+    - infrastructure
+spec:
+  owner: platform-team

@@ -22,7 +22,7 @@ jobs:
       - name: Update timestamp
         run: |
           git config user.name "fintech-ref-agent[bot]"
-          git config user.email "agent@fintech-reference"
+          git config user.email "bpelow7@gmail.com"
           date -u > docs/last-validated.txt
           git add -A
           git diff --staged --quiet || git commit -m "chore(agent): catalog validation $(date -u +%Y-%m-%d)"
